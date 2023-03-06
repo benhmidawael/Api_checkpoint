@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
-import PostCard from './components/PostCard';
+import UserList from './components/UserList';
 
 function App() {
-  const [posts, setPosts] = useState([])
+  const [Users, setUsers] = useState([])
  useEffect(() => {
-  axios.get('https://jsonplaceholder.typicode.com/posts')
+  axios.get('https://jsonplaceholder.typicode.com/users')
   .then(function (res) {
     // handle success
-    setPosts(res.data)
+    setUsers(res.data)
 
   })
   .catch(function (error) {
@@ -25,8 +25,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {posts.map((el) =>
-        <PostCard key={el.i} post={el} />)
+        {Users.map((el) =>
+        <UserList key={el.i} user={el} />)
         }
       </header>
     </div>
